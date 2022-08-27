@@ -11,13 +11,13 @@ import javax.persistence.Entity;
 @Setter
 public class Member extends UserWithRoles {
 
-    String firstName;
-    String lastName;
-    String street;
-    String city;
-    String zip;
-    boolean approved;
-    String ranking;
+    private String firstName;
+    private String lastName;
+    private String street;
+    private String city;
+    private String zip;
+    private boolean approved;
+    private String ranking;
 
     public Member(String user, String password, String email, String firstName, String lastName, String street, String city, String zip, boolean approved, String ranking) {
         super(user, password, email);
