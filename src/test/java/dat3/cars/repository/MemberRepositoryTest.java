@@ -22,7 +22,7 @@ class MemberRepositoryTest {
 
     @BeforeAll
     public static void setupData(@Autowired MemberRepository memberRepository){
-        Member member = new Member("userxx", "1234", "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635", true, "100");
+        Member member = new Member("userxx", "1234", "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635");
         member.addRole(Role.USER);
         memberRepository.save(member);
         m1 = member.getRoles();

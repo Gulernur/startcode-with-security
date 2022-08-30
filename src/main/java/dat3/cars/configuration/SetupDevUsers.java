@@ -28,7 +28,7 @@ public class SetupDevUsers implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Member m1 = new Member("userxx", passwordUsedByAll, "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635", true, "100");
+        Member m1 = new Member("userxx", passwordUsedByAll, "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635");
         memberRepository.save(m1);
         Car car = new Car("Toyota", "corola", 1000, 5000);
         carRepository.save(car);
