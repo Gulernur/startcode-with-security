@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class MemberRepositoryTest {
 
-    /*@Autowired
+    @Autowired
     MemberRepository memberRepository;
 
     static List<Role> m1;
@@ -23,14 +23,15 @@ class MemberRepositoryTest {
     @BeforeAll
     public static void setupData(@Autowired MemberRepository memberRepository){
         Member member = new Member("userxx", "1234", "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635", true, "100");
+        member.addRole(Role.USER);
         memberRepository.save(member);
         m1 = member.getRoles();
-    }*/
+    }
 
-    /*@Test
+    @Test
     public void testFindByRoles() {
-        Member found = memberRepository.findMemberByRoles(m1);
+        Member found = memberRepository.findMemberByRolesIn(m1);
         assertEquals(m1, found.getRoles());
-    }*/
+    }
 
 }

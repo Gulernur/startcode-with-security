@@ -16,7 +16,7 @@ class CarRepositoryTest {
 
     static int c1;
 
-    /*@BeforeAll
+    @BeforeAll
     public static void setupData(@Autowired CarRepository carRepository){
         Car car = new Car("Toyota", "corola", 1000, 50);
         carRepository.save(car);
@@ -33,7 +33,5 @@ class CarRepositoryTest {
     public void testFindByBrand(){
         Car found = carRepository.findCarByBrand("Toyota");
         assertEquals(c1, found.getId());
-    }*/
-
-
+    }
 }

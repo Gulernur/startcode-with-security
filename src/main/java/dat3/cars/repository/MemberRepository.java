@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MemberRepository extends CrudRepository<Member, String> {
 
-    Member findMemberByRoles(List<Role> roles);
+    Member findMemberByRolesIn(List<Role> roles);
 }
