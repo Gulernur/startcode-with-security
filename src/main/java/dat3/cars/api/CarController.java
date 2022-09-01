@@ -36,8 +36,8 @@ public class CarController {
 
     @PostMapping // same as above when you are using @RestController
     CarResponse addCar(@RequestBody CarRequest body){
-        //CarResponse res = CarService.addCar(body);
-        return null;
+        CarResponse res = carService.addCar(body);
+        return res;
     }
 
     //Security USER/ADMIN ???
