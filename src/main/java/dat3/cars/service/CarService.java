@@ -56,7 +56,7 @@ public class CarService {
         carRepository.save(car);
     }
 
-    public void deleteByUsername(int id) {
+    public void deleteById(int id) {
         carRepository.existsById(id);
     }
 }

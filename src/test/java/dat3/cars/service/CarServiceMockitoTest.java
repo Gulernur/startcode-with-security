@@ -49,11 +49,12 @@ class CarServiceMockitoTest {
     @Test
     void addCar() {
         Car c = new Car("Honda", "something", 1500, 50);
-        //If you wan't to do this for Car you have to manually set the id. REMEMBER there is NO real database
+        c.setId(1000);
+
         Mockito.when(carRepository.save(any(Car.class))).thenReturn(c);
         CarRequest request = new CarRequest(c);
         CarResponse found = carService.addCar(request);
-        assertEquals(0, found.getId());
+        assertEquals(1000, found.getId());
     }
 
     @Test
@@ -67,17 +68,30 @@ class CarServiceMockitoTest {
 
     @Test
     void editCar() {
-        /*CarRequest request = new CarRequest(new Car("Honda", "something", 1500, 50));
-        carService.editCar(request,5);
-        //find m1 and verify that address has been changed
-        CarResponse response = carService.findCarById(5);
-        assertEquals("Toyota", response.getBrand());
-        assertEquals("hahahaha", response.getModel());
-        assertEquals(5000, response.getPricePrDay());
-        assertEquals(80, response.getBestDiscount());*/
+        Car c = new Car("Honda", "something", 1500, 50);
+        c.setId(1000);
+        CarRequest request = new CarRequest(c);
+        Mockito.when(carRepository.findById(1000)).thenReturn(Optional.of(c));
+        CarResponse response = carService.findCarById(1000);
+        carService.editCar(request,1000);
+
+        assertEquals("Honda", response.getBrand());
+        assertEquals("something", response.getModel());
+        assertEquals(1500, response.getPricePrDay());
+        assertEquals(50, response.getBestDiscount());
     }
 
     @Test
-    void deleteByUsername() {
+    void deleteById() {
+        /*Car c = new Car("Honda", "something", 1500, 50);
+        Car c2 = new Car("Honda", "something", 1500, 50);
+        c.setId(1000);
+        c.setId(100);
+        Mockito.when(carRepository.findById(1000)).thenReturn(Optional.of(c));
+        Mockito.when(carRepository.findById(100)).thenReturn(Optional.of(c2));
+
+        carRepository.deleteById(1000);
+
+        assertEquals(1,carRepository.count());*/
     }
 }

@@ -48,6 +48,6 @@ public class CarController {
     // Security ADMIN
     @DeleteMapping("/{id}")
     void deleteCarById(@PathVariable int id) {
-        carService.deleteByUsername(id);
+        carService.deleteById(id);
     }
 }
