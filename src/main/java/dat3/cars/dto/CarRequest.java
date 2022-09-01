@@ -22,6 +22,7 @@ public class CarRequest {
     }
 
     public CarRequest(Car c) {
+        this.id = c.getId();
         this.brand = c.getBrand();
         this.model = c.getModel();
         this.pricePrDay = c.getPricePrDay();

@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -57,10 +58,23 @@ class CarServiceMockitoTest {
 
     @Test
     void findCarById() {
+        Car c = new Car("Honda", "something", 1500, 50);
+        c.setId(1000);
+        Mockito.when(carRepository.findById(1000)).thenReturn(Optional.of(c));
+        CarResponse response = carService.findCarById(1000);
+        assertEquals(1000, response.getId());
     }
 
     @Test
     void editCar() {
+        /*CarRequest request = new CarRequest(new Car("Honda", "something", 1500, 50));
+        carService.editCar(request,5);
+        //find m1 and verify that address has been changed
+        CarResponse response = carService.findCarById(5);
+        assertEquals("Toyota", response.getBrand());
+        assertEquals("hahahaha", response.getModel());
+        assertEquals(5000, response.getPricePrDay());
+        assertEquals(80, response.getBestDiscount());*/
     }
 
     @Test

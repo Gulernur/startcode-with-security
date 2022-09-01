@@ -3,10 +3,7 @@ package dat3.cars.service;
 
 import dat3.cars.dto.CarRequest;
 import dat3.cars.dto.CarResponse;
-import dat3.cars.dto.MemberRequest;
-import dat3.cars.dto.MemberResponse;
 import dat3.cars.entity.Car;
-import dat3.cars.entity.Member;
 import dat3.cars.repository.CarRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -43,13 +40,23 @@ public class CarService {
     }
 
     public CarResponse findCarById(int id) {
-        CarResponse carResponse;
-        return null;
+        Car found = carRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Car not found"));
+        return new CarResponse(found,false);
     }
 
     public void editCar(CarRequest body, int id) {
+        Car car = carRepository.findById(id).orElseThrow(()->  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car with this id already exist"));
+        if(!(body.getId() == (id))){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cannot change id");
+        }
+        car.setBrand(body.getBrand());
+        car.setModel(body.getModel());
+        car.setPricePrDay(body.getPricePrDay());
+        car.setBestDiscount(body.getBestDiscount());
+        carRepository.save(car);
     }
 
     public void deleteByUsername(int id) {
+        carRepository.existsById(id);
     }
 }

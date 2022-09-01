@@ -28,6 +28,7 @@ public class CarResponse {
     LocalDateTime edited;
 
     public CarResponse(Car c, boolean includeAll) {
+        this.id = c.getId();
         this.brand = c.getBrand();
         this.model = c.getModel();
         this.pricePrDay = c.getPricePrDay();
