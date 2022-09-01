@@ -3,9 +3,14 @@ package dat3.cars.service;
 
 import dat3.cars.dto.CarRequest;
 import dat3.cars.dto.CarResponse;
+import dat3.cars.dto.MemberRequest;
+import dat3.cars.dto.MemberResponse;
 import dat3.cars.entity.Car;
+import dat3.cars.entity.Member;
 import dat3.cars.repository.CarRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +31,15 @@ public class CarService {
         return response;
     }
 
-    public static CarResponse addCar(CarRequest body) {
-        return  null;
+    public CarResponse addCar(CarRequest carRequest) {
+        if(carRepository.existsById(carRequest.getId())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Car with this ID already exist");
+        }
+
+        Car newCar = CarRequest.getCarEntity(carRequest);
+        newCar = carRepository.save(newCar);
+
+        return new CarResponse(newCar, false);
     }
 
     public CarResponse findCarById(int id) {
