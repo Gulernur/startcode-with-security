@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class MemberRepositoryTest {
 
-    @Autowired
+    /*@Autowired
     MemberRepository memberRepository;
 
     static List<Role> m1;
 
     @BeforeAll
-    public static void setupData(@Autowired MemberRepository memberRepository){
+    public static void setupData(@Autowired MemberRepository memberRepository) {
         Member member = new Member("userxx", "1234", "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635");
         member.addRole(Role.USER);
         memberRepository.save(member);
@@ -32,6 +32,6 @@ class MemberRepositoryTest {
     public void testFindByRoles() {
         Member found = memberRepository.findMemberByRolesIn(m1);
         assertEquals(m1, found.getRoles());
-    }
+    }*/
 
 }
