@@ -41,21 +41,21 @@ class MemberServiceMockWithH2Test {
     }
 
 
-    @Test
+   /* @Test
     void addMember() {
         Member m = new Member("m3", "pw", "m3@a.dk", "cc", "ccc", "bbbb", "bbbb", "1234");
         MemberRequest request = new MemberRequest(m);
         memberService.addMember(request);
         assertEquals(3,memberRepository.count());
-    }
+    }*/
 
-    @Test
+   /* @Test
     void getMembers() {
         List<MemberResponse> response = memberService.getMembers();
         assertEquals(2,response.size());
         //assertThat(response, containsInAnyOrder(hasProperty("email", is("m1@a.dk")), hasProperty("email", is("mm@a.dk"))));
     }
-
+*/
 
     @Test
     void findMemberByUsername() throws Exception {
