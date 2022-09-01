@@ -64,7 +64,7 @@ class MemberServiceMockWithH2Test {
     }
 
 
-    @Test
+   /* @Test
     void editMember() {
     }
 
@@ -74,5 +74,5 @@ class MemberServiceMockWithH2Test {
 
     @Test
     void deleteByUsername() {
-    }
+    }*/
 }

@@ -52,7 +52,7 @@ class MemberServiceMockitoTest {
         assertEquals("m1", found.getUsername());
     }
 
-    @Test
+  /*  @Test
     void findMembers() {
     }
 
@@ -71,5 +71,5 @@ class MemberServiceMockitoTest {
 
     @Test
     void deleteByUsername() {
-    }
+    }*/
 }
