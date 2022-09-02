@@ -83,15 +83,13 @@ class CarServiceMockitoTest {
 
     @Test
     void deleteById() {
-        /*Car c = new Car("Honda", "something", 1500, 50);
-        Car c2 = new Car("Honda", "something", 1500, 50);
+        Car c = new Car("Honda", "something", 1500, 50);
         c.setId(1000);
-        c.setId(100);
         Mockito.when(carRepository.findById(1000)).thenReturn(Optional.of(c));
-        Mockito.when(carRepository.findById(100)).thenReturn(Optional.of(c2));
-
+        carService.findCarById(1000);
+        System.out.println(c);
         carRepository.deleteById(1000);
-
-        assertEquals(1,carRepository.count());*/
+        System.out.println(c);
+        assertEquals(0,carRepository.count());
     }
 }
