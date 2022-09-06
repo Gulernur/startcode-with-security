@@ -2,8 +2,10 @@ package dat3.cars.configuration;
 
 import dat3.cars.entity.Car;
 import dat3.cars.entity.Member;
+import dat3.cars.entity.Reservation;
 import dat3.cars.repository.CarRepository;
 import dat3.cars.repository.MemberRepository;
+import dat3.cars.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
 import org.springframework.boot.ApplicationArguments;
@@ -11,18 +13,22 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 import dat3.security.repository.UserWithRolesRepository;
 
+import java.time.LocalDate;
+
 @Controller
 public class SetupDevUsers implements ApplicationRunner {
 
     UserWithRolesRepository userWithRolesRepository;
     MemberRepository memberRepository;
     CarRepository carRepository;
+    ReservationRepository reservationRepository;
     String passwordUsedByAll;
 
-    public SetupDevUsers(UserWithRolesRepository userWithRolesRepository, MemberRepository memberRepository, CarRepository carRepository) {
+    public SetupDevUsers(UserWithRolesRepository userWithRolesRepository, MemberRepository memberRepository, CarRepository carRepository, ReservationRepository reservationRepository) {
         this.userWithRolesRepository = userWithRolesRepository;
         this.memberRepository = memberRepository;
         this.carRepository = carRepository;
+        this.reservationRepository = reservationRepository;
         passwordUsedByAll = "test12";
     }
 
@@ -30,9 +36,15 @@ public class SetupDevUsers implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         Member m1 = new Member("userxx", passwordUsedByAll, "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635");
         memberRepository.save(m1);
+        setupUserWithRoleUsers();
         Car car = new Car("Toyota", "corola", 1000, 5000);
         carRepository.save(car);
-        setupUserWithRoleUsers();
+        LocalDate date = LocalDate.of(2022,9,6);
+
+        Reservation r1 = new Reservation(date,m1, car);
+        m1.addReservation(r1);
+        memberRepository.save(m1);
+
     }
 
     /*****************************************************************************************
