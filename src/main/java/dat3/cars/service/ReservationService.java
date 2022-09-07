@@ -15,9 +15,9 @@ import java.time.LocalDate;
 @Service
 public class ReservationService {
 
-    ReservationRepository reservationRepository;
-    MemberRepository memberRepository;
-    CarRepository carRepository;
+    private ReservationRepository reservationRepository;
+    private MemberRepository memberRepository;
+    private CarRepository carRepository;
 
     public ReservationService(ReservationRepository reservationRepository, MemberRepository memberRepository, CarRepository carRepository) {
         this.reservationRepository = reservationRepository;
