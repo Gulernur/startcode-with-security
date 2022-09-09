@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -28,6 +30,8 @@ public class MemberResponse {
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
     LocalDateTime edited;
 
+    List<ReservationResponse> reservations;
+
     Integer ranking;
 
     //Convert Member Entity to Member DTO
@@ -43,6 +47,16 @@ public class MemberResponse {
             this.created = m.getCreated();
             this.edited = m.getEdited();
             this.ranking = m.getRanking();
+        }
+
+        if (m.getReservations().size() > 0) {
+            reservations = m.getReservations().stream().map(r -> ReservationResponse.builder()
+                    .id(r.getId())
+                    .carId(r.getCar().getId())
+                    .carBrand(r.getCar().getBrand())
+                    .rentalDate(r.getRentalDate())
+                    .build()
+            ).collect(Collectors.toList());
         }
     }
 }
