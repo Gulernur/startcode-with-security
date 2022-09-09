@@ -68,7 +68,7 @@ class MemberServiceMockWithH2Test {
 
     @Test
     void getMembers() {
-        List<MemberResponse> response = memberService.getMembers();
+        List<MemberResponse> response = memberService.getMembers(true);
         assertEquals(2,response.size());
         assertThat(response, containsInAnyOrder(hasProperty("email", is("m1@a.dk")), hasProperty("email", is("mm@a.dk"))));
     }

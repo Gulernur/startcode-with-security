@@ -21,9 +21,9 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public List<MemberResponse> getMembers() {
+    public List<MemberResponse> getMembers(boolean includeAll) {
         List<Member> members = memberRepository.findAll();
-        List<MemberResponse> response = members.stream().map(member -> new MemberResponse(member,false)).collect(Collectors.toList());
+        List<MemberResponse> response = members.stream().map(member -> new MemberResponse(member,includeAll)).collect(Collectors.toList());
         return response;
     }
 

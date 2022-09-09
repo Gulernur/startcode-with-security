@@ -35,7 +35,9 @@ public class SetupDevUsers implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         Member m1 = new Member("userxx", passwordUsedByAll, "a@b.dk", "Kurt", "Kurtsen", "tgv", "ishøj", "2635");
+        Member m2 = new Member("kenneth", passwordUsedByAll, "kenn@b.dk", "Kenn", "Kensen", "nordvest", "hiihi", "2400");
         memberRepository.save(m1);
+        memberRepository.save(m2);
         setupUserWithRoleUsers();
         Car car = new Car("Toyota", "corola", 1000, 5000);
         carRepository.save(car);

@@ -25,7 +25,12 @@ public class MemberController {
     //Security ADMIN ???
     @GetMapping
     List<MemberResponse> getMembers(){
-        return memberService.getMembers();
+        return memberService.getMembers(false);
+    }
+
+    @GetMapping("/all")
+    List<MemberResponse> getMembersAllInfo(){
+        return memberService.getMembers(true);
     }
 
     //Security ADMIN ???
