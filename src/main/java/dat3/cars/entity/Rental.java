@@ -2,10 +2,7 @@ package dat3.cars.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
@@ -23,6 +20,12 @@ public class Rental {
 
     private LocalDate rentalDate;
     private double pricePrDay;
+
+    @ManyToOne
+    private Member member;
+
+    @ManyToOne
+    private Car car;
 
     public Rental(LocalDate rentalDate, double pricePrDay) {
         this.rentalDate = rentalDate;
