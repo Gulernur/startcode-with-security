@@ -1,13 +1,13 @@
 package dat3.cars.api;
 
+import dat3.cars.dto.ReservationsResponse;
+import dat3.cars.entity.Reservation;
 import dat3.cars.service.ReservationService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/reservations")
@@ -26,5 +26,11 @@ public class ReservationController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
         LocalDate reservationDate = LocalDate.parse(date,formatter);
         reservationService.reserveCar(memberId,carId,reservationDate);
+    }
+
+    @GetMapping("/...")
+    public List<ReservationsResponse> getReservations(){
+        List<ReservationsResponse> res = reservationService.getReservations();
+        return res;
     }
 }
