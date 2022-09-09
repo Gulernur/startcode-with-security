@@ -28,7 +28,7 @@ public class ReservationController {
         reservationService.reserveCar(memberId,carId,reservationDate);
     }
 
-    @GetMapping("/...")
+    @GetMapping
     public List<ReservationsResponse> getReservations(){
         List<ReservationsResponse> res = reservationService.getReservations();
         return res;
