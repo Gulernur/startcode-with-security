@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ReservationsResponse {
+public class ReservationResponse {
 
     int id;
     String memberUsername;
@@ -23,7 +23,7 @@ public class ReservationsResponse {
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
     private LocalDate rentalDate;
 
-    public ReservationsResponse(Reservation reservation) {
+    public ReservationResponse(Reservation reservation) {
         this.id = reservation.getId();
         this.memberUsername = reservation.getMember().getUsername();
         this.carId = reservation.getId();

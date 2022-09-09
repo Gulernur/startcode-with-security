@@ -1,7 +1,6 @@
 package dat3.cars.api;
 
-import dat3.cars.dto.ReservationsResponse;
-import dat3.cars.entity.Reservation;
+import dat3.cars.dto.ReservationResponse;
 import dat3.cars.service.ReservationService;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +28,8 @@ public class ReservationController {
     }
 
     @GetMapping
-    public List<ReservationsResponse> getReservations(){
-        List<ReservationsResponse> res = reservationService.getReservations();
+    public List<ReservationResponse> getReservations(){
+        List<ReservationResponse> res = reservationService.getReservations();
         return res;
     }
 }
