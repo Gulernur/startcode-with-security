@@ -40,6 +40,9 @@ public class Member extends UserWithRoles {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Rental> rentals = new ArrayList<>();
+
     public void addReservation(Reservation reservation){
         reservations.add(reservation);
         reservation.setMember(this);

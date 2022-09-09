@@ -42,6 +42,9 @@ public class Car {
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<Rental> rentals = new ArrayList<>();
+
     public void addReservation(Reservation reservation){
         reservations.add(reservation);
         reservation.setCar(this);
